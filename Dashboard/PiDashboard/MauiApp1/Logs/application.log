@@ -1,0 +1,7 @@
+PiDashboard Log - 4/12/2025 1:57:26 AM
+[4/12/2025 1:57:26 AM] - ERROR - Invalid IP address or domain "" (Parameter 'hostnameOrAddress')
+[4/12/2025 1:57:26 AM] - ERROR - Invalid IP address or domain "1999..88888.000000000" (Parameter 'hostnameOrAddress')
+[4/12/2025 1:57:26 AM] - INFO - Name: Google Primary DNS Address: 8.8.8.8
+[4/12/2025 1:57:26 AM] - INFO - Name: Google Secondary DNS Address: 8.8.4.4
+[4/12/2025 1:57:26 AM] - INFO - Name: Google Address: google.com
+[4/12/2025 1:57:26 AM] - INFO - Name: Kali Pi Address: kali-pi

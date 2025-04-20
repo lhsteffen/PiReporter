@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<devices>
+	<device>
+		<address>8.8.8.8</address>
+		<name>Google Primary DNS</name>
+	</device>
+	<device>
+		<address>8.8.4.4</address>
+		<name>Google Secondary DNS</name>
+	</device>
+	<device>
+		<address>google.com</address>
+		<name>Google</name>
+	</device>
+	<device>
+		<address>kali-pi</address>
+		<name>Kali Pi</name>
+	</device>
+	<device>
+		<address></address>
+		<name>Error Case</name>
+	</device>
+	<device>
+		<address>1999..88888.000000000</address>
+		<name>Error Case 2</name>
+	</device>
+</devices>
