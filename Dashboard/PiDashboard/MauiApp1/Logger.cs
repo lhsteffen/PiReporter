@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MauiApp1
 {
-    class Logger
+    public class Logger
     {
         private string logfile;
 

@@ -10,12 +10,12 @@ using System.Xml.Linq;
 
 namespace MauiApp1
 {
-    class DeviceTester
+    public class DeviceTester
     {
         private string address;
-        private string name;
+        public string name { get; set; }
         private int interval = 5000;
-        private string status = "pending";
+        public string status { get; set; } = "pending";
         private Logger logger;
         public DeviceTester(string hostnameOrAddress, string name, Logger logger, int interval = 5000)
         {
