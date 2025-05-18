@@ -8,14 +8,21 @@
         <viewmodels:DevicesViewModel/>
     </ContentPage.BindingContext>
 
-    <VerticalStackLayout HorizontalOptions="Fill">
-        <Label Text="Devices" />
-        <CollectionView ItemsSource="{Binding Devices}" HorizontalOptions="Fill">
+    <VerticalStackLayout 
+        HorizontalOptions="Fill" 
+        BackgroundColor="Blue">
+        <CollectionView ItemsSource="{Binding Devices}" HorizontalOptions="Fill" BackgroundColor="Aqua">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <HorizontalStackLayout HorizontalOptions="Fill">
-                        <Label Text="{Binding name}" FontSize="10" TextColor="Black" HorizontalOptions="Start"/>
-                        <Label Text="{Binding status}" FontSize="10" TextColor="Gray" HorizontalOptions="End"/>
+                    <HorizontalStackLayout HorizontalOptions="Fill" BackgroundColor="Azure" Padding="15,5,0,0" Spacing="5">
+                        <Grid BackgroundColor="Beige">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Text="{Binding name}" FontSize="10" TextColor="Black" HorizontalOptions="Start"/>
+                            <Label Grid.Column="1" Text="{Binding status}" FontSize="10" TextColor="{Binding color}" HorizontalOptions="End"/>
+                        </Grid>
                     </HorizontalStackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

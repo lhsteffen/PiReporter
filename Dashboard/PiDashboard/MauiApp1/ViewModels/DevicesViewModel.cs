@@ -22,15 +22,28 @@ namespace MauiApp1.ViewModels
                 new DeviceTester("google.com", "Google Main Page", logger)
             };
 
-            //foreach (DeviceTester device in list.getTesters())
-            //{
-            //    Devices.Add(device);
-            //}
+            foreach (DeviceTester device in Devices)
+            {
+                device.pingDevice();
+            }
         }
 
         public void AddNewDevice(DeviceTester device)
         {
             this.Devices.Add(device);
+        }
+
+        public void RemoveDevice(DeviceTester device)
+        {
+            this.Devices.Remove(device);
+        }
+
+        public void TestDevices()
+        {
+            foreach (DeviceTester device in this.Devices)
+            {
+                device.pingDevice();
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -16,6 +16,7 @@ namespace MauiApp1
         public string name { get; set; }
         private int interval = 5000;
         public string status { get; set; } = "pending";
+        public Color color { get; set; } = new Color(200, 200, 200);
         private Logger logger;
         public DeviceTester(string hostnameOrAddress, string name, Logger logger, int interval = 5000)
         {
@@ -64,9 +65,11 @@ namespace MauiApp1
                     if (reply.Status == IPStatus.Success)
                     {
                         this.status = "active";
+                        this.color = new Color(0, 255, 0); // Green
                     } else
                     {
                         this.status = "inactive";
+                        this.color = new Color(255, 0, 0); // Red
                     }
                         return reply.Status == IPStatus.Success;
                 }
