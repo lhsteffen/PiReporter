@@ -17,8 +17,7 @@ namespace MauiApp1
         private int interval = 5000;
         public string status { get; set; } = "pending";
         public Color color { get; set; } = new Color(200, 200, 200);
-        private Logger logger;
-        public DeviceTester(string hostnameOrAddress, string name, Logger logger, int interval = 5000)
+        public DeviceTester(string hostnameOrAddress, string name, int interval = 5000)
         {
             // Check if entered hostnameOrAddress is a domain name, and if so, is it valid
             if (Uri.CheckHostName(hostnameOrAddress) == UriHostNameType.Dns)
@@ -50,7 +49,6 @@ namespace MauiApp1
             }
 
             // Set remaining Instance Variables
-            this.logger = logger;
             this.name = name;
             this.interval = interval;
         }
@@ -79,9 +77,13 @@ namespace MauiApp1
             }
         }
 
-        public void logTester()
+        public string logTester()
         {
-            this.logger.writeLog("Name: " + this.name + " Address: " + this.address, "INFO");
+            //if (this.logger != null)
+            //{
+            //    this.logger.writeLog("Name: " + this.name + " Address: " + this.address, "INFO");
+            //}
+            return "Name: " + this.name + " Address: " + this.address;
         }
 
         public string getAddress()

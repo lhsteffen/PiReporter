@@ -11,5 +11,9 @@
         Title="Devices"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
+    <ShellContent 
+        Title="New Device"
+        ContentTemplate="{DataTemplate local:AddDevicePage}"
+        Route="AddDevicePage" />
 
 </Shell>

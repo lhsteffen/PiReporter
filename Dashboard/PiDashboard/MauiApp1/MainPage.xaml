@@ -27,6 +27,7 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
+        <Button Text="Add Device" Clicked="OnAddDeviceClicked" />
     </VerticalStackLayout>
 
     <!--<ScrollView>

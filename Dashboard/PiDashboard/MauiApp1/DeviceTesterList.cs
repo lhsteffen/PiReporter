@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,17 +11,21 @@ namespace MauiApp1
 {
     class DeviceTesterList
     {
-        private List<DeviceTester> dtlist = new List<DeviceTester>();
+        private ObservableCollection<DeviceTester> dtlist;
         private Logger logger;
 
         public DeviceTesterList(DeviceTester dt, Logger logger)
         {
-            this.dtlist.Add(dt);
+            this.dtlist = new ObservableCollection<DeviceTester>
+            {
+                dt
+            };
             this.logger = logger;
         }
 
         public DeviceTesterList(string filename, Logger log)
         {
+            this.dtlist = new ObservableCollection<DeviceTester> { };
             this.logger = log;
             try
             {
@@ -31,7 +36,44 @@ namespace MauiApp1
                     {
                         if (elem.Element("address")?.Value != null)
                         {
-                            this.dtlist.Add(new DeviceTester(elem.Element("address")?.Value, elem.Element("name")?.Value, this.logger));
+                            this.dtlist.Add(new DeviceTester(elem.Element("address")?.Value, elem.Element("name")?.Value));
+                        }
+                        else
+                        {
+                            this.logger.writeLog("Error adding new device, ignored", "ERROR");
+                        }
+                    }
+                    catch (ArgumentException ae)
+                    {
+                        this.logger.writeLog(ae.Message, "ERROR");
+                    }
+                }
+
+            }
+            catch (XmlException xe)
+            {
+                this.logger.writeLog(xe.Message, "ERROR");
+            }
+            catch (FileNotFoundException fe)
+            {
+                this.logger.writeLog(fe.Message, "ERROR");
+            }
+        }
+
+        public DeviceTesterList(ObservableCollection<DeviceTester> devices, string filename, Logger log)
+        {
+            this.dtlist = devices;
+            this.logger = log;
+            try
+            {
+                XDocument config = XDocument.Load(filename);
+                foreach (XElement elem in config.Descendants("device"))
+                {
+                    try
+                    {
+                        if (elem.Element("address")?.Value != null)
+                        {
+                            this.dtlist.Add(new DeviceTester(elem.Element("address")?.Value, elem.Element("name")?.Value));
                         }
                         else
                         {
@@ -63,6 +105,7 @@ namespace MauiApp1
         public void addTester(DeviceTester dt)
         {
             this.dtlist.Add(dt);
+            this.logger.writeLog(dt.logTester(), "INFO");
         }
 
         public void removeTester(string address)
@@ -81,7 +124,7 @@ namespace MauiApp1
             return this.dtlist[index];
         }
 
-        public List<DeviceTester> getTesters()
+        public ObservableCollection<DeviceTester> getTesters()
         {
             return this.dtlist;
         }
@@ -90,7 +133,15 @@ namespace MauiApp1
         {
             foreach (DeviceTester dt in this.dtlist)
             {
-                dt.logTester();
+                this.logger.writeLog(dt.logTester(), "INFO");
+            }
+        }
+
+        public void pingTesters()
+        {
+            foreach (DeviceTester dt in this.dtlist)
+            {
+                dt.pingDevice();
             }
         }
     }
