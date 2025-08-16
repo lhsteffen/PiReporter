@@ -16,10 +16,7 @@ namespace MauiApp1
 
         public DeviceTesterList(DeviceTester dt, Logger logger)
         {
-            this.dtlist = new ObservableCollection<DeviceTester>
-            {
-                dt
-            };
+            this.dtlist = new ObservableCollection<DeviceTester> { dt };
             this.logger = logger;
         }
 
