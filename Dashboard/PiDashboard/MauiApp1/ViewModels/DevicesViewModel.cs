@@ -20,17 +20,6 @@ namespace MauiApp1.ViewModels
 
         public DevicesViewModel()
         {
-            //Devices = new ObservableCollection<DeviceTester> { };
-            //this.dtlist = new DeviceTesterList("C:\\Users\\lhste\\Projects\\PiReporter\\Dashboard\\PiDashboard\\MauiApp1\\Resources\\Data\\devices.xml", logger);
-            //foreach (DeviceTester dt in dtlist.getTesters())
-            //{
-            //    Devices.Add(dt);
-            //}
-
-            //foreach (DeviceTester device in Devices)
-            //{
-            //    device.pingDevice();
-            //}
             Devices = new ObservableCollection<DeviceTester> { };
             this.dtlist = new DeviceTesterList(Devices, "C:\\Users\\lhste\\Projects\\PiReporter\\Dashboard\\PiDashboard\\MauiApp1\\Resources\\Data\\devices.xml", logger);
             TestDevices();

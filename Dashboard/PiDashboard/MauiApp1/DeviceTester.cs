@@ -79,10 +79,6 @@ namespace MauiApp1
 
         public string logTester()
         {
-            //if (this.logger != null)
-            //{
-            //    this.logger.writeLog("Name: " + this.name + " Address: " + this.address, "INFO");
-            //}
             return "Name: " + this.name + " Address: " + this.address;
         }
 
